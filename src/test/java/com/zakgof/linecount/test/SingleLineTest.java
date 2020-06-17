@@ -1,9 +1,12 @@
 package com.zakgof.linecount.test;
 
+import com.zakgof.linecount.JavaLineCounter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.zakgof.linecount.JavaLineCounter;
 
+/**
+ * Single-line comment/quotes combinations.
+ */
 public class SingleLineTest {
 
   @Test

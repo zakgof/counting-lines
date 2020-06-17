@@ -1,9 +1,12 @@
 package com.zakgof.linecount.test;
 
+import com.zakgof.linecount.JavaLineCounter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.zakgof.linecount.JavaLineCounter;
 
+/**
+ * Test multi-line comments.
+ */
 public class MultiLineTest {
 
   @Test
@@ -27,11 +30,12 @@ public class MultiLineTest {
 
   }
 
+  @Test
   public void stringsVsComments() {
     test(2, "\"string/* \"", " not a comment !");
     test(1, "/* comment", "\" not a string */", "so this is code");
     test(1, "/* comment //\" not a string ! */", "so this is code");
-    test(1, "/* \"string*/\"", "not a comment !");
+    test(2, "/* \"string*/\"", "not a comment !");
   }
 
   private void test(int expected, String... lines) {
