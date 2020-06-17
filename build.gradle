@@ -1,6 +1,6 @@
 plugins {
-    id 'java'
-    id 'checkstyle'
+  id 'java'
+  id 'checkstyle'
 }
 
 compileJava.options.encoding = 'UTF-8'
@@ -8,37 +8,37 @@ sourceCompatibility = 8
 targetCompatibility = 8
 
 ext {
-   javaMainClass = 'com.zakgof.linecount.Main'
+  javaMainClass = 'com.zakgof.linecount.Main'
 }
 
 repositories {
-    jcenter()
+  jcenter()
 }
 
 dependencies {
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
 }
 
 test {
-	useJUnitPlatform()
+  useJUnitPlatform()
 }
 
 checkstyle {
-    toolVersion = '8.33'
-	config project.resources.text.fromUri('https://raw.githubusercontent.com/checkstyle/checkstyle/checkstyle-8.33/src/main/resources/google_checks.xml')
+  toolVersion = '8.33'
+  config project.resources.text.fromUri('https://raw.githubusercontent.com/checkstyle/checkstyle/checkstyle-8.33/src/main/resources/google_checks.xml')
 }
 
 jar {
-    manifest {
-        attributes 'Main-Class': javaMainClass
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+  manifest {
+    attributes 'Main-Class': javaMainClass
+  }
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
 }
 
 task runOnSelf(type: JavaExec) {
-    main = javaMainClass
-    classpath = sourceSets.main.runtimeClasspath
-    args "${project.projectDir}/src"
+  main = javaMainClass
+  classpath = sourceSets.main.runtimeClasspath
+  args "${project.projectDir}/src"
 }
